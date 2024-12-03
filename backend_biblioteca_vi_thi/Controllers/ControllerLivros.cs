@@ -8,10 +8,18 @@ namespace backend_biblioteca_vi_thi.Controllers
     [ApiController]
     public class ControllerLivros : ControllerBase
     {
-        private static List<livro> livros =
-        new List<livro>
+
+        private static List<User> users =
+        new List<User>
         {
-            new livro
+            
+        };
+
+
+        private static List<Livro> livros =
+        new List<Livro>
+        {
+            new Livro
                 {
                     Id = 1,
                     Titulo = "Dom Casmurro",
@@ -19,7 +27,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1899,
                     Quantidade = 2
                 },
-            new livro
+            new Livro
                 {
                     Id = 2,
                     Titulo = "Memórias Póstumas de Brás Cubas",
@@ -27,7 +35,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1881,
                     Quantidade = 3
                 },
-            new livro
+            new Livro
                 {
                     Id = 3,
                     Titulo = "Grande Sertão: Veredas",
@@ -35,7 +43,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1956,
                     Quantidade = 4
                 },
-            new livro
+            new Livro
                 {
                     Id = 4,
                     Titulo = "O Cortiço",
@@ -43,7 +51,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1890,
                     Quantidade = 4
                 },
-            new livro
+            new Livro
                 {
                     Id = 5,
                     Titulo = "Iracema",
@@ -51,7 +59,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1865,
                     Quantidade = 1
                 },
-            new livro
+            new Livro
                 {
                     Id = 6,
                     Titulo = "Macunaíma",
@@ -59,7 +67,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1928,
                     Quantidade = 11
                 },
-            new livro
+            new Livro
                 {
                     Id = 7,
                     Titulo = "Capitães da Areia",
@@ -67,7 +75,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1937,
                     Quantidade = 2
                 },
-            new livro
+            new Livro
                 {
                     Id = 8,
                     Titulo = "Vidas Secas",
@@ -75,7 +83,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1938,
                     Quantidade = 9
                 },
-            new livro
+            new Livro
                 {
                     Id = 9,
                     Titulo = "A Moreninha",
@@ -83,7 +91,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1844,
                     Quantidade = 2
                 },
-            new livro
+            new Livro
                 {
                     Id = 10,
                     Titulo = "O Tempo e o Vento",
@@ -91,7 +99,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1949,
                     Quantidade = 1
                 },
-            new livro
+            new Livro
                 {
                     Id = 11,
                     Titulo = "A Hora da Estrela",
@@ -99,7 +107,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1977,
                     Quantidade = 1
                 },
-            new livro
+            new Livro
                 {
                     Id = 12,
                     Titulo = "O Quinze",
@@ -107,7 +115,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1930,
                     Quantidade = 1
                 },
-            new livro
+            new Livro
                 {
                     Id = 13,
                     Titulo = "Menino do Engenho",
@@ -115,7 +123,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1932,
                     Quantidade = 5
                 },
-            new livro
+            new Livro
                 {
                     Id = 14,
                     Titulo = "Sagarana",
@@ -123,7 +131,7 @@ namespace backend_biblioteca_vi_thi.Controllers
                     Ano = 1946,
                     Quantidade = 3
                 },
-            new livro
+            new Livro
                 {
                     Id = 15,
                     Titulo = "Fogo Morto",
@@ -137,7 +145,7 @@ namespace backend_biblioteca_vi_thi.Controllers
         // ------------------------------------------------------------------------
         // LISTA DE LIVROS
         [HttpGet]
-        public ActionResult<List<livro>>
+        public ActionResult<List<Livro>>
            LerTodosLivros()
         {
             return Ok(livros);
@@ -147,7 +155,7 @@ namespace backend_biblioteca_vi_thi.Controllers
         // LISTA DE LIVROS POR ID
 
         [HttpGet("{id}")]
-        public ActionResult<List<livro>>
+        public ActionResult<List<Livro>>
         LerUnicoLivro(int id)
         {
             var unico = livros.Find(x => x.Id == id);
@@ -177,10 +185,12 @@ namespace backend_biblioteca_vi_thi.Controllers
         // ------------------------------------------------------------------------
         // SOLICITA LOCAÇÃO
         [HttpPut("{id}")]
-        public ActionResult<List<livro>>
-
+        public ActionResult<List<Livro>>
+            
     SolicitarLocacao(int id)
         {
+
+
             var pesquisaid = livros.Find(x => x.Id == id);
             if (pesquisaid is null)
                 return NotFound("Livro não existe");
@@ -188,8 +198,15 @@ namespace backend_biblioteca_vi_thi.Controllers
 
             if (pesquisaid.Quantidade < 1)
                 return BadRequest("Livro está esgotado");
-            else
-                return Ok("");
+
+
+            pesquisaid.Quantidade--;
+                return Ok(livros);
+
+
+
+
+
 
         }
         // ------------------------------------------------------------------------

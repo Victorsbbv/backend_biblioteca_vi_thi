@@ -7,8 +7,5 @@
         public string Autor { get; set; } = string.Empty;
         public int Ano { get; set; }
         public int Quantidade { get; set; }
-        //public bool Alugado { get; set; } = false;
-        //public string UserNome { get; set; } = string.Empty;
-        //public int UserAno { get; set; }
     }
 }

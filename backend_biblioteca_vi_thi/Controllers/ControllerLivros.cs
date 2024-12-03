@@ -9,8 +9,8 @@ namespace backend_biblioteca_vi_thi.Controllers
     public class ControllerLivros : ControllerBase
     {
 
-        private static List<User> users =
-        new List<User>
+        private static List<Locacao> users =
+        new List<Locacao>
         {
             
         };
@@ -184,14 +184,14 @@ namespace backend_biblioteca_vi_thi.Controllers
         //}
         // ------------------------------------------------------------------------
         // SOLICITA LOCAÇÃO
-        [HttpPut("{id}")]
+        [HttpPost]
         public ActionResult<List<Livro>>
             
-    SolicitarLocacao(int id)
+    SolicitarLocacao(Locacao locacao)
         {
 
 
-            var pesquisaid = livros.Find(x => x.Id == id);
+            var pesquisaid = livros.Find(x => x.Id == locacao.IdLivro);
             if (pesquisaid is null)
                 return NotFound("Livro não existe");
 
@@ -201,7 +201,8 @@ namespace backend_biblioteca_vi_thi.Controllers
 
 
             pesquisaid.Quantidade--;
-                return Ok(livros);
+            users.Add(locacao);
+            return Ok(livros);
 
 
 
@@ -209,6 +210,7 @@ namespace backend_biblioteca_vi_thi.Controllers
 
 
         }
+
         // ------------------------------------------------------------------------
 
 

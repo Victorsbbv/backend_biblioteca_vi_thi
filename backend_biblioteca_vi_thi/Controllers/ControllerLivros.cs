@@ -186,10 +186,10 @@ namespace backend_biblioteca_vi_thi.Controllers
                 return NotFound("Livro não existe");
 
 
-            if (pesquisaid.Quantidade <= 0)
-                return Ok("Livro está esgotado");
+            if (pesquisaid.Quantidade < 1)
+                return BadRequest("Livro está esgotado");
             else
-                return Ok("Mistério");
+                return Ok("");
 
         }
         // ------------------------------------------------------------------------

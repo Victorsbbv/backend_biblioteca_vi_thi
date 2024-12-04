@@ -8,14 +8,14 @@ namespace backend_biblioteca_vi_thi.Controllers
     [ApiController]
     public class ControllerLivros : ControllerBase
     {
-
+        // LISTA DE USUÁRIOS (VAZIA POIS É ADICIONADA DEPOIS)
         private static List<Locacao> users =
         new List<Locacao>
         {
             
         };
 
-
+        // LISTA DE LIVROS
         private static List<Livro> livros =
         new List<Livro>
         {
@@ -166,24 +166,7 @@ namespace backend_biblioteca_vi_thi.Controllers
             return Ok(unico);
         }
 
-
-
-
-
-        // ------------------------------------------------------------------------
-        // ADICIONA CARROS
-        //[HttpPost]
-        //public ActionResult<List<livro>>
-        //    AddCarro(livro novo)
-
-        //{
-        //    if (novo.Id == 0 && carros.Count > 0)
-        //        novo.Id = carros[carros.Count - 1].Id + 1;
-        //    carros.Add(novo);
-        //    return Ok(carros);
-        //}
-        // ------------------------------------------------------------------------
-        // SOLICITA LOCAÇÃO
+        // FAZ A LOCAÇÃO, ENCONTRANDO O LIVRO E DIMINUINDO A QUANTIDADE, SOLICITA O CADASTRO DO USUÁRIO
         [HttpPost]
         public ActionResult<List<Livro>>
             

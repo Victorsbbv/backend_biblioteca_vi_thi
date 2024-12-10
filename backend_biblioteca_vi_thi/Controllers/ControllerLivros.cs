@@ -151,6 +151,16 @@ namespace backend_biblioteca_vi_thi.Controllers
             return Ok(livros);
         }
 
+
+        // ------------------------------------------------------------------------
+        // LISTA DE USUÁRIOS
+        [HttpGet("usuario")]
+        public ActionResult<List<Locacao>>
+           LerTodosUsuarios()
+        {
+            return Ok(users);
+        }
+
         // ------------------------------------------------------------------------
         // LISTA DE LIVROS POR ID
 

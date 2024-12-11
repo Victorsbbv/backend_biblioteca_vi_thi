@@ -195,7 +195,7 @@ namespace backend_biblioteca_vi_thi.Controllers
 
             pesquisaid.Quantidade--;
             users.Add(locacao);
-            return Ok(livros);
+            return Ok(pesquisaid);
 
 
 

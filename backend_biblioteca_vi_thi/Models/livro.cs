@@ -7,5 +7,6 @@
         public string Autor { get; set; } = string.Empty;
         public int Ano { get; set; }
         public int Quantidade { get; set; }
+        public string? ImagemUrl { get; set; }
     }
 }
